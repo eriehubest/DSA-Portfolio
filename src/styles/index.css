@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Neco-Regular";
+  src: url("/fonts/neco/Neco-Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Neco-Medium";
+  src: url("/fonts/neco/Neco-Medium.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Neco-Bold";
+  src: url("/fonts/neco/Neco-Bold.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Neco-Variable";
+  src: url("/fonts/neco/Neco-Variable.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Excon-Regular";
+  src: url("/fonts/exon/Excon-Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Supreme-Regular";
+  src: url("/fonts/supreme/regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Supreme-Bold";
+  src: url("/fonts/supreme/bold.woff2")
+    format("woff2");
+}
+
+@theme {
+  --color-blue-120: #e0dfdf;
+  --color-primary: #fdfcf5;
+
+  --color-background: #fbf9ef;
+
+  --color-green: #a3a380;
+  --color-green-light: #d6ce93;
+  --color-green-light: #efebce;
+  --color-skin: #d8a48f;
+  --color-pink: #bb8588;
+  --color-brown: #766153;
+
+  --font-NecoR:
+    "Neco-Regular", sans-serif;
+  --font-NecoB: "Neco-Bold", sans-serif;
+  --font-NecoM:
+    "Neco-Medium", sans-serif;
+  --font-NecoV:
+    "Neco-Variable", sans-serif;
+
+  --font-ExconR:
+    "Excon-Regular", sans-serif;
+
+  --font-SupR:
+    "Supreme-Regular", sans-serif;
+
+  --font-SupB:
+    "Supreme-Bold", sans-serif;
+
+  --font-Merri: serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  width: 100vw;
+  font-family: var(--font-NecoR);
+  background: var(--color-brown);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  height: 20%;
+  @apply rounded-full;
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@layer components {
+  .navbar {
+    @apply z-9998 fixed w-[150px] h-screen flex flex-col justify-between items-center left-0 top-0 overflow-visible;
+
+    .navlinks {
+      @apply flex-2 h-full w-full flex flex-col justify-center items-center gap-4 overflow-visible;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+
+      .navlink {
+        @apply transition-all duration-500 opacity-30 overflow-visible relative;
+
+        .icon-link {
+          @apply text-3xl;
+        }
+
+        h1 {
+          @apply absolute left-[75px] whitespace-nowrap opacity-0 translate-x-0 transition-all duration-300 pointer-events-none;
+        }
+      }
+
+      .navlink:hover h1 {
+        @apply opacity-100 translate-x-5;
+      }
+
+      .navlink:hover {
+        @apply opacity-100;
+        transform: translateZ(200px);
+      }
+
+      .navlink:hover + * {
+        @apply opacity-50;
+        transform: translateZ(150px)
+          rotateX(-40deg);
+      }
+
+      .navlink:hover + * + * {
+        @apply opacity-40;
+        transform: translateZ(50px)
+          rotateX(-10deg);
+      }
+
+      .navlink:has(+ *:hover) {
+        @apply opacity-50;
+        transform: translateZ(150px)
+          rotateX(40deg);
+      }
+
+      .navlink:has(+ * + *:hover) {
+        @apply opacity-40;
+        transform: translateZ(50px)
+          rotateX(10deg);
+      }
+
+      .dark {
+        @apply w-[70px] h-[70px] rounded-lg bg-black/5 backdrop-blur-2xl flex-center cursor-pointer;
+      }
+
+      .light {
+        @apply w-[45%] aspect-square rounded-lg bg-white/5 backdrop-blur-2xl flex-center cursor-pointer text-white;
+      }
+    }
+  }
+}

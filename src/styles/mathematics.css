@@ -1,0 +1,307 @@
+@import "tailwindcss";
+@import "./index.css";
+
+@layer components {
+  .maths-page {
+    @apply fixed inset-0 z-[9999] bg-[#5e4b42] text-white overflow-y-auto overscroll-none;
+    background:
+      radial-gradient(circle at top right, rgb(239 235 206 / 0.16), transparent 30%),
+      radial-gradient(circle at bottom left, rgb(163 163 128 / 0.18), transparent 28%),
+      linear-gradient(135deg, #5e4b42 0%, #766153 46%, #6b574c 100%);
+
+    .maths-shell {
+      @apply min-h-dvh w-[100%] pl-[20rem] pr-24 py-10;
+    }
+
+    .maths-sidebar {
+      @apply fixed left-24 top-[50%] translate-y-[-50%] w-[10%] h-[90dvh] flex flex-col justify-between py-4;
+    }
+
+    .sidebar-copy {
+      @apply flex flex-col gap-4 pr-6;
+    }
+
+    .sidebar-note {
+      @apply text-sm leading-7 text-white/70;
+    }
+
+    .side-nav {
+      @apply flex flex-col gap-3;
+    }
+
+    .side-link {
+      @apply w-full text-left px-5 py-4 rounded-2xl bg-white/8 text-white/70 border border-white/10 transition-all duration-300;
+    }
+
+    .side-link:hover,
+    .side-link.is-active {
+      @apply bg-[#efebce] text-[#4b3a32] border-[#efebce];
+      transform: translateX(8px);
+    }
+
+    .maths-main {
+      @apply min-h-dvh flex items-center;
+    }
+
+    .section-panel {
+      @apply w-full rounded-[2rem] border border-white/10 bg-white/8 backdrop-blur-md shadow-2xl overflow-hidden;
+    }
+
+    .section-panel.is-hidden {
+      @apply hidden;
+    }
+
+    .hero-block {
+      @apply grid grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] gap-8 items-center px-10 pt-9;
+    }
+
+    .hero-copy {
+      @apply flex flex-col gap-6;
+    }
+
+    .eyebrow {
+      @apply uppercase tracking-[0.35em] text-sm text-white/60;
+    }
+
+    h1 {
+      @apply text-[2.8rem] leading-tight font-NecoM max-w-[20ch];
+    }
+
+    .lede {
+      @apply text-lg leading-7 text-white/85 max-w-2xl;
+    }
+
+    .maths-graphic {
+      @apply relative h-[300px] flex items-center justify-center;
+    }
+
+    .orbit-ring {
+      @apply absolute rounded-full border border-[#efebce]/30;
+    }
+
+    .orbit-ring-1 {
+      width: 280px;
+      height: 280px;
+    }
+
+    .orbit-ring-2 {
+      width: 210px;
+      height: 210px;
+    }
+
+    .orbit-ring-3 {
+      width: 140px;
+      height: 140px;
+    }
+
+    .graphic-core {
+      @apply h-28 w-28 rounded-full flex items-center justify-center bg-[#efebce] text-[#4b3a32] uppercase tracking-[0.22em] text-sm shadow-xl;
+      box-shadow: 0 0 90px rgb(239 235 206 / 0.24);
+    }
+
+    .floating-chip {
+      @apply absolute rounded-full px-4 py-2 bg-white/10 border border-white/15 text-sm uppercase tracking-[0.22em] text-white/80;
+      backdrop-filter: blur(10px);
+    }
+
+    .chip-1 {
+      top: 46px;
+      right: 46px;
+    }
+
+    .chip-2 {
+      bottom: 92px;
+      left: 8px;
+    }
+
+    .chip-3 {
+      bottom: 36px;
+      right: 92px;
+    }
+
+    .signal-grid {
+      @apply grid grid-cols-2 gap-5 px-10 py-7;
+    }
+
+    .signal-card {
+      @apply rounded-[1.5rem] border border-white/10 bg-black/10 p-5 flex flex-col gap-3;
+    }
+
+    .signal-label {
+      @apply uppercase tracking-[0.28em] text-xs text-white/55;
+    }
+
+    .content-block {
+      @apply px-10 pb-9 flex flex-col gap-5;
+    }
+
+    h2 {
+      @apply text-xl font-NecoB;
+    }
+
+    .focus-list {
+      @apply flex flex-col gap-3;
+    }
+
+    .focus-item {
+      @apply rounded-[1.25rem] bg-white/6 border border-white/10 px-5 py-4 text-base leading-7 text-white/85;
+    }
+
+    .achievements-block {
+      @apply pt-9 min-h-dvh;
+    }
+
+    .timeline-list {
+      @apply flex flex-col gap-7 mt-3 pb-10;
+    }
+
+    .timeline-card {
+      @apply grid grid-cols-[56px_minmax(0,1fr)] gap-5;
+    }
+
+    .timeline-marker {
+      @apply flex flex-col items-center;
+    }
+
+    .marker-dot {
+      @apply h-4 w-4 rounded-full bg-[#efebce] border-4 border-[#d8a48f] mt-4;
+      box-shadow: 0 0 0 6px rgb(239 235 206 / 0.08);
+    }
+
+    .marker-line {
+      @apply w-px flex-1 bg-white/14 mt-3;
+      min-height: 8rem;
+    }
+
+    .timeline-list .timeline-card:last-child .marker-line {
+      @apply hidden;
+    }
+
+    .timeline-content {
+      @apply rounded-[1.75rem] bg-black/10 border border-white/10 px-6 py-6 flex flex-col gap-5;
+    }
+
+    .timeline-header {
+      @apply flex items-end justify-between gap-4 border-b border-white/10 pb-4;
+    }
+
+    .timeline-year {
+      @apply text-4xl leading-none font-SupB text-[#efebce];
+    }
+
+    .timeline-org {
+      @apply uppercase tracking-[0.28em] text-xs text-white/60;
+    }
+
+    .award-list {
+      @apply flex flex-wrap gap-3;
+    }
+
+    .award-chip {
+      @apply rounded-full px-4 py-2 border border-white/12 bg-white/8 text-sm uppercase tracking-[0.14em] text-white/84;
+    }
+
+    .timeline-note {
+      @apply text-base leading-7 text-white/78 max-w-3xl;
+    }
+
+    .back-button {
+      @apply fixed top-0 left-0 h-dvh flex items-center justify-center w-[96px];
+
+      .button {
+        @apply text-6xl transition-all duration-300 ease-in-out cursor-pointer rotate-270 text-white/80;
+      }
+
+      .button:hover {
+        @apply text-white rotate-360 scale-108;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .maths-page {
+      .maths-shell {
+        @apply min-h-dvh pl-8 pr-8 py-20;
+      }
+
+      .maths-sidebar {
+        @apply fixed left-0 right-0 top-0 bottom-auto w-auto h-auto py-4 px-8 gap-5 z-20;
+        background: linear-gradient(180deg, rgb(94 75 66 / 0.96), rgb(94 75 66 / 0.85), transparent);
+      }
+
+      .side-nav {
+        @apply flex-row flex-wrap;
+      }
+
+      .side-link {
+        @apply w-auto;
+      }
+
+      .side-link:hover,
+      .side-link.is-active {
+        transform: translateX(0);
+      }
+
+      .hero-block {
+        @apply grid-cols-1 px-8 pt-24;
+      }
+
+      .signal-grid {
+        @apply grid-cols-1 px-8 py-8;
+      }
+
+      .content-block {
+        @apply px-8 pb-8;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .maths-page {
+      .maths-shell {
+        @apply min-h-dvh pl-5 pr-5 py-20;
+      }
+
+      h1 {
+        @apply text-4xl;
+      }
+
+      .lede,
+      .timeline-note,
+      .focus-item {
+        @apply text-base leading-7;
+      }
+
+      .maths-graphic {
+        @apply h-[280px];
+      }
+
+      .orbit-ring-1 {
+        width: 220px;
+        height: 220px;
+      }
+
+      .orbit-ring-2 {
+        width: 168px;
+        height: 168px;
+      }
+
+      .orbit-ring-3 {
+        width: 116px;
+        height: 116px;
+      }
+
+      .timeline-card {
+        @apply grid-cols-[40px_minmax(0,1fr)] gap-4;
+      }
+
+      .back-button {
+        @apply w-[68px];
+
+        .button {
+          @apply text-5xl;
+        }
+      }
+    }
+  }
+}
