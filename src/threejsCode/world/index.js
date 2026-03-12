@@ -2,6 +2,9 @@ import Application from "../Application";
 
 import * as THREE from 'three';
 
+const assetUrl = (path) =>
+    `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 export default class World {
     constructor() {
         this.app = Application.getInstance();
@@ -50,8 +53,8 @@ export default class World {
             });
         }
 
-        const pngTexture = textureLoader.load("/images/eric2.png");
-        const raymondTexture = textureLoader.load("/images/Raymond.png");
+        const pngTexture = textureLoader.load(assetUrl("images/eric2.png"));
+        const raymondTexture = textureLoader.load(assetUrl("images/Raymond.png"));
         pngTexture.colorSpace = THREE.SRGBColorSpace;
         raymondTexture.colorSpace = THREE.SRGBColorSpace;
 

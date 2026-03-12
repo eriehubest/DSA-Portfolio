@@ -5,6 +5,9 @@ import particlesFragmentShader from './shaders/fragment.glsl';
 
 import Application from "../Application";
 
+const assetUrl = (path) =>
+    `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 export default class Mathematics {
     constructor() {
         this.appInstance = Application.getInstance();
@@ -39,7 +42,7 @@ export default class Mathematics {
                 uResolution: new THREE.Uniform(
                     new THREE.Vector2(this.viewport.width * 2, this.viewport.height * 2),
                 ),
-                uPictureTexture: new THREE.Uniform(this.textureloader.load('/images/picture-1.png')),
+                uPictureTexture: new THREE.Uniform(this.textureloader.load(assetUrl('images/picture-1.png'))),
                 uDisplacementTexture: new THREE.Uniform(this.displacement.texture),
             }
         })
@@ -70,7 +73,7 @@ export default class Mathematics {
         this.displacement.context = this.displacement.canvas.getContext('2d');
         this.displacement.context.fillRect(0, 0, this.displacement.canvas.width, this.displacement.canvas.height);
 
-        this.displacement.glowImage = await loadImage('/images/glow.png')
+        this.displacement.glowImage = await loadImage(assetUrl('images/glow.png'))
 
         this.displacement.interactPlane = new THREE.Mesh(
             new THREE.PlaneGeometry(10, 10),
