@@ -164,8 +164,12 @@
       .bgblackanimate {
         @apply absolute overflow-hidden top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-[3000px] w-[3000px] bg-[#766153] rounded-full opacity-100;
 
+        .about-text {
+          @apply w-[80dvw] max-w-[80dvw] text-center px-6;
+        }
+
         .about-text h1 {
-          @apply overflow-hidden;
+          @apply overflow-hidden text-center leading-relaxed;
         }
       }
 

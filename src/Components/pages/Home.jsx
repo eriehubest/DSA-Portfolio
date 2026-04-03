@@ -18,6 +18,7 @@ import Application from "../../threejsCode/Application";
 import AnimationTracker from "../../threejsCode/utils/AnimationTracker";
 import TimelineLineSVG from "./TimelineSVG";
 import Mathematics from "./Mathematics";
+import ComputerScience from "./ComputerScience";
 
 gsap.registerPlugin(
     ScrollTrigger,
@@ -127,6 +128,10 @@ const Home = ({
     const [
         mathematicsPage,
         setMathematicsPage
+    ] = useState(false);
+    const [
+        computerSciencePage,
+        setComputerSciencePage
     ] = useState(false);
 
     const canvasRef = useRef(null);
@@ -843,7 +848,7 @@ const Home = ({
                 <div className="hero-glow hero-fade-item" />
                 <div className="hero-text hero-fade-item">
                     <p className="hero-eyebrow">
-                        Portfolio Draft 01
+                        DSA Portfolio
                     </p>
                     <h1 className="transform-text">
                         Hu Wenxuan
@@ -894,10 +899,10 @@ const Home = ({
             </div>
 
             <div className="journey">
-                <div className="bgblackanimate">
-                    <div className="about-text absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-screen flex-center">
-                        <h1 className="text-[2rem] text-white font-ExconR leading-[16rem]">
-                            I am interested in how abstract structures become systems that behave.
+                    <div className="bgblackanimate">
+                    <div className="about-text absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-center">
+                        <h1 className="text-[2rem] text-white font-ExconR leading-[1.5]">
+                            I am interested in how abstract structures become systems that behave, adapt, and communicate ideas clearly.
                         </h1>
                     </div>
                 </div>
@@ -909,10 +914,12 @@ const Home = ({
                                 How I Think
                             </h1>
                             <p className="initiative-description">
-                                A student currently
-                                exploring Computer
-                                Science and
-                                Mathematical Thinking
+                                I approach problems by
+                                looking for structure
+                                first, then testing how
+                                that structure holds
+                                under pressure, edge
+                                cases, and real use.
                             </p>
                         </div>
 
@@ -921,9 +928,12 @@ const Home = ({
                                 Principles
                             </h1>
                             <p className="initiative-description">
-                                I break problems into
-                                structures, constraints,
-                                and trade-offs
+                                I break difficult work
+                                into assumptions,
+                                constraints, trade-offs,
+                                and smaller decisions
+                                that can be reasoned
+                                through carefully.
                             </p>
                         </div>
                     </div>
@@ -1046,7 +1056,10 @@ const Home = ({
                             </div>
 
                             <div className="row row-right">
-                                <div className="element bg-black/20">
+                                <div
+                                    className="element bg-black/20"
+                                    onClick={() => setComputerSciencePage(true)}
+                                >
                                     <div className="card-glow" />
                                     <div className="topic-grid-title">
                                         <span>Computer Science</span>
@@ -1065,7 +1078,7 @@ const Home = ({
                                             <span>Iteration</span>
                                         </div>
                                         <div className="card-cta">
-                                            More sections coming
+                                            Open detailed page
                                         </div>
                                     </div>
                                 </div>
@@ -1145,6 +1158,7 @@ const Home = ({
             </div> */}
 
             <Mathematics mathematicsPage={mathematicsPage} setMathematicsPage={setMathematicsPage} />
+            <ComputerScience computerSciencePage={computerSciencePage} setComputerSciencePage={setComputerSciencePage} />
 
             <div className="footer">
                 <div className="footer-inner">

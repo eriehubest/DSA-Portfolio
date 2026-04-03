@@ -2,12 +2,9 @@
 @import "./index.css";
 
 @layer components {
-  .maths-page {
+  .maths-page,
+  .cs-page {
     @apply fixed inset-0 z-[9999] bg-[#5e4b42] text-white overflow-y-auto overscroll-none;
-    background:
-      radial-gradient(circle at top right, rgb(239 235 206 / 0.16), transparent 30%),
-      radial-gradient(circle at bottom left, rgb(163 163 128 / 0.18), transparent 28%),
-      linear-gradient(135deg, #5e4b42 0%, #766153 46%, #6b574c 100%);
 
     .maths-shell {
       @apply min-h-dvh w-[100%] pl-[20rem] pr-24 py-10;
@@ -218,8 +215,114 @@
     }
   }
 
+  .maths-page {
+    background:
+      radial-gradient(circle at top right, rgb(239 235 206 / 0.16), transparent 30%),
+      radial-gradient(circle at bottom left, rgb(163 163 128 / 0.18), transparent 28%),
+      linear-gradient(135deg, #5e4b42 0%, #766153 46%, #6b574c 100%);
+  }
+
+  .cs-page {
+    background:
+      radial-gradient(circle at top left, rgb(239 235 206 / 0.14), transparent 32%),
+      radial-gradient(circle at bottom right, rgb(186 165 135 / 0.16), transparent 28%),
+      linear-gradient(145deg, #4f4038 0%, #6b574c 52%, #5c4a41 100%);
+
+    .side-link:hover,
+    .side-link.is-active {
+      @apply bg-[#efebce] text-[#4b3a32] border-[#efebce];
+    }
+
+    .graphic-core {
+      @apply bg-[#efebce] text-[#4b3a32];
+      box-shadow: 0 0 90px rgb(239 235 206 / 0.22);
+    }
+
+    .orbit-ring {
+      @apply border-[#efebce]/30;
+    }
+
+    .marker-dot {
+      @apply bg-[#efebce] border-[#baa587];
+      box-shadow: 0 0 0 6px rgb(239 235 206 / 0.08);
+    }
+
+    .timeline-year {
+      @apply text-[#efebce];
+    }
+  }
+
+  .cs-page {
+    .cs-graphic {
+      @apply relative h-[300px] flex items-center justify-center;
+    }
+
+    .grid-pulse {
+      @apply absolute rounded-[2rem] border border-white/10 bg-white/6;
+      width: 260px;
+      height: 260px;
+      transform: rotate(8deg);
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
+    }
+
+    .grid-pulse::before,
+    .grid-pulse::after {
+      content: "";
+      @apply absolute inset-5 rounded-[1.5rem] border border-white/8;
+    }
+
+    .grid-pulse::after {
+      inset: 36px;
+    }
+
+    .code-chip {
+      @apply absolute rounded-full px-4 py-2 bg-white/10 border border-white/15 text-sm uppercase tracking-[0.22em] text-white/82;
+      backdrop-filter: blur(10px);
+    }
+
+    .code-chip-1 {
+      top: 34px;
+      left: 30px;
+    }
+
+    .code-chip-2 {
+      top: 72px;
+      right: 22px;
+    }
+
+    .code-chip-3 {
+      bottom: 42px;
+      left: 48px;
+    }
+
+    .project-list {
+      @apply grid grid-cols-3 gap-5 mt-3;
+    }
+
+    .project-card {
+      @apply rounded-[1.6rem] border border-white/10 bg-black/10 p-6 flex flex-col gap-5;
+    }
+
+    .project-header {
+      @apply flex items-start justify-between gap-4;
+    }
+
+    .project-title {
+      @apply text-xl font-NecoB leading-tight;
+    }
+
+    .project-type {
+      @apply uppercase tracking-[0.28em] text-xs text-white/55;
+    }
+
+    .project-note {
+      @apply text-base leading-7 text-white/80;
+    }
+  }
+
   @media (max-width: 1024px) {
-    .maths-page {
+    .maths-page,
+    .cs-page {
       .maths-shell {
         @apply min-h-dvh pl-8 pr-8 py-20;
       }
@@ -254,10 +357,17 @@
         @apply px-8 pb-8;
       }
     }
+
+    .cs-page {
+      .project-list {
+        @apply grid-cols-1;
+      }
+    }
   }
 
   @media (max-width: 640px) {
-    .maths-page {
+    .maths-page,
+    .cs-page {
       .maths-shell {
         @apply min-h-dvh pl-5 pr-5 py-20;
       }
@@ -301,6 +411,17 @@
         .button {
           @apply text-5xl;
         }
+      }
+    }
+
+    .cs-page {
+      .cs-graphic {
+        @apply h-[260px];
+      }
+
+      .grid-pulse {
+        width: 220px;
+        height: 220px;
       }
     }
   }

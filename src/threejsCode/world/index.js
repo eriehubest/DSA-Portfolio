@@ -66,6 +66,7 @@ export default class World {
         });
 
         this.mesh = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), pngMaterials)
+        this.mesh.position.set(0, 3, 0)
         this.meshCol = new THREE.Group();
         this.meshCol.add(this.wireframeMesh, this.mesh)
         this.meshCol.position.set(0, 0.8, 0)
