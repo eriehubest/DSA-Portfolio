@@ -1,4 +1,5 @@
 import React, {
+    useEffect,
     useLayoutEffect,
     useRef,
     useState,
@@ -134,9 +135,13 @@ const Home = ({
         setComputerSciencePage
     ] = useState(false);
 
+    const [computerScienceHover, setComputerScienceHover] = useState(false);
+    const [mathsHover, setMathsHover] = useState(false);
+
     const canvasRef = useRef(null);
     const applicationRef = useRef(null);
     const timelineDirection = useRef(1);
+    const scribblePathRef = useRef(null);
 
     useLayoutEffect(() => {
         if (!canvasRef.current) return;
@@ -820,6 +825,136 @@ const Home = ({
         topicsGridAnimationGate.current = true;
     }, []);
 
+    useLayoutEffect(() => {
+        if (!scribblePathRef.current) return;
+
+        const path = document.querySelector('.computer-science-element .card-scribble path');
+        const length = path?.getTotalLength();
+
+        gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+            opacity: 1,
+        })
+
+        const path2 = document.querySelector('.computer-science-element .card-scribble .path2');
+        const length2 = path2?.getTotalLength();
+
+        gsap.set(path2, {
+            strokeDasharray: length2,
+            strokeDashoffset: length2,
+            opacity: 1,
+        })
+
+        const path11 = document.querySelector('.mathematics-element .card-scribble path');
+
+        gsap.set(path11, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+            opacity: 1,
+        })
+
+        const path12 = document.querySelector('.mathematics-element .card-scribble .path2');
+
+        gsap.set(path12, {
+            strokeDasharray: length2,
+            strokeDashoffset: length2,
+            opacity: 1,
+        })
+    }, [])
+
+    useLayoutEffect(() => {
+        if (!scribblePathRef.current) return;
+
+        const path = document.querySelector('.computer-science-element .card-scribble path');
+        const path11 = document.querySelector('.mathematics-element .card-scribble path');
+        const length = path?.getTotalLength();
+        const hoverText1 = document.querySelector('.computer-science-element .hover-text')
+        
+        const path2 = document.querySelector('.computer-science-element .card-scribble .path2');
+        const path12 = document.querySelector('.mathematics-element .card-scribble .path2');
+        const length2 = path2?.getTotalLength();
+        const hoverText2 = document.querySelector('.mathematics-element .hover-text')
+
+        if (computerScienceHover) {
+            gsap.killTweensOf(path)
+            gsap.killTweensOf(path2)
+            gsap.to(path, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: 'power2.out',
+            })
+            gsap.to(path2, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: 'power2.out',
+            }, "<0.2")
+            gsap.to(hoverText1, {
+                opacity: 1,
+                duration: 0.5,
+            }, "<")
+        }
+
+        else {
+            gsap.killTweensOf(path)
+            gsap.killTweensOf(path2)
+            gsap.to(path2, {
+                strokeDashoffset: length2,
+                duration: 2,
+                ease: 'power2.out',
+            })  
+            gsap.to(path, {
+                strokeDashoffset: length,
+                duration: 2,
+                ease: 'power2.out'
+            }, "<0.2")
+            gsap.to(hoverText1, {
+                opacity: 0,
+                duration: 0.5,
+            }, "<")
+        }
+
+        if (mathsHover)
+        {
+            gsap.killTweensOf(path11)
+            gsap.killTweensOf(path12)
+            gsap.to(path11, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: 'power2.out',
+            })
+            gsap.to(path12, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: 'power2.out',
+            }, "<0.2")
+            gsap.to(hoverText2, {
+                opacity: 1,
+                duration: 0.5,
+            }, "<")
+        }
+
+        else 
+        {
+            gsap.killTweensOf(path11)
+            gsap.killTweensOf(path12)
+            gsap.to(path12, {
+                strokeDashoffset: length2,
+                duration: 2,
+                ease: 'power2.out',
+            })  
+            gsap.to(path11, {
+                strokeDashoffset: length,
+                duration: 2,
+                ease: 'power2.out'
+            }, "<0.2")
+            gsap.to(hoverText2, {
+                opacity: 0,
+                duration: 0.5,
+            }, "<")
+        }
+    }, [computerScienceHover, mathsHover])
+
     return (
         <div className="home" ref={root}>
             {/* <ScreenScribble setIntroAnimation={setIntroAnimation} /> */}
@@ -899,7 +1034,7 @@ const Home = ({
             </div>
 
             <div className="journey">
-                    <div className="bgblackanimate">
+                <div className="bgblackanimate">
                     <div className="about-text absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex-center">
                         <h1 className="text-[2rem] text-white font-ExconR leading-[1.5]">
                             I am interested in how abstract structures become systems that behave, adapt, and communicate ideas clearly.
@@ -953,31 +1088,31 @@ const Home = ({
                     }
                 />
 
-                    <div className="timeelements-container">
-                        <div className="background-year-text">
-                            {currentTimelineYear}
-                        </div>
-                        {timelineEntries.map((entry) => (
-                            <div
-                                key={entry.year}
-                                className={`time-element year-${entry.year}`}
-                            >
-                                <div className="top">
-                                    <div className="text-container">
-                                        <p>{entry.topText}</p>
-                                    </div>
+                <div className="timeelements-container">
+                    <div className="background-year-text">
+                        {currentTimelineYear}
+                    </div>
+                    {timelineEntries.map((entry) => (
+                        <div
+                            key={entry.year}
+                            className={`time-element year-${entry.year}`}
+                        >
+                            <div className="top">
+                                <div className="text-container">
+                                    <p>{entry.topText}</p>
                                 </div>
+                            </div>
 
-                                <div className="bottom">
-                                    <div className="text-container">
-                                        <div className="bottom-text">
-                                            {entry.bottomText}
-                                        </div>
+                            <div className="bottom">
+                                <div className="text-container">
+                                    <div className="bottom-text">
+                                        {entry.bottomText}
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
+                </div>
 
                 <div className="journey-detail">
                     <div className="spacer layer1"></div>
@@ -1028,10 +1163,21 @@ const Home = ({
                         <div className="grid-container">
                             <div className="row row-left">
                                 <div
-                                    className="element bg-black/20"
+                                    className="element bg-black/20 mathematics-element"
                                     onClick={() => setMathematicsPage(true)}
+                                    onMouseEnter={() => { setMathsHover(true) }}
+                                    onMouseLeave={() => { setMathsHover(false) }}
                                 >
                                     <div className="card-glow" />
+                                    <svg ref={scribblePathRef} className="card-scribble" viewBox="200 60 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#e3d5ca" stroke-width="140" stroke-linecap="round" />
+                                    </svg>
+                                    <svg className="card-scribble scale-x-[-2]" viewBox="60 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="180" stroke-linecap="round" />
+                                    </svg>
+                                    <div className="hover-text">
+                                        CLICK
+                                    </div>
                                     <div className="topic-grid-title">
                                         <span>Mathematics</span>
                                         <span className="card-status">
@@ -1055,12 +1201,25 @@ const Home = ({
                                 </div>
                             </div>
 
-                            <div className="row row-right">
+                            <div className="row row-right computer-science-element">
                                 <div
                                     className="element bg-black/20"
                                     onClick={() => setComputerSciencePage(true)}
+                                    onMouseEnter={() => { setComputerScienceHover(true) }}
+                                    onMouseLeave={() => { setComputerScienceHover(false) }}
                                 >
                                     <div className="card-glow" />
+                                    <svg ref={scribblePathRef} className="card-scribble" viewBox="200 60 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#e3d5ca" stroke-width="140" stroke-linecap="round" />
+                                    </svg>
+                                    <svg className="card-scribble scale-x-[-2]" viewBox="60 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="180" stroke-linecap="round" />
+                                    </svg>
+
+                                    <div className="hover-text">
+                                        CLICK
+                                    </div>
+
                                     <div className="topic-grid-title">
                                         <span>Computer Science</span>
                                         <span className="card-status">

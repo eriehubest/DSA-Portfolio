@@ -42,6 +42,16 @@
     format("woff2");
 }
 
+@font-face {
+  font-family: "Bubble-Bold";
+  src: url("/fonts/bubbles/bold.ttf");
+}
+
+@font-face {
+  font-family: "Bubble-Regular";
+  src: url("/fonts/bubbles/regular.ttf");
+}
+
 @theme {
   --color-blue-120: #e0dfdf;
   --color-primary: #fdfcf5;
@@ -73,6 +83,9 @@
     "Supreme-Bold", sans-serif;
 
   --font-Merri: serif;
+
+  --font-BubbleB: "Bubble-Bold", sans-serif;
+  --font-BubbleR: "Bubble-Regular", sans-serif;
 }
 
 * {

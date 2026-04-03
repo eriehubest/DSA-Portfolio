@@ -370,6 +370,29 @@
               transform: scale(1.08);
               opacity: 0.95;
             }
+
+            .hover-text
+            {
+              @apply text-7xl absolute h-full w-full top-0 left-0 flex justify-center items-center text-center font-BubbleB z-101 text-white opacity-0;
+            }
+
+            .card-scribble {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 150%;
+              height: 150%;
+              opacity: 1;
+              pointer-events: none;
+              color: white;
+              z-index: 10;
+            }
+
+            .topic-grid-title,
+            .information {
+              position: relative;
+              z-index: 1;
+            }
           }
         }
 
