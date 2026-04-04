@@ -271,6 +271,25 @@ const ComputerScience = ({
                                     </article>
                                 ))}
                             </div>
+                            <div className="project-link">
+                                <div
+                                    className="link-start element"
+                                    onClick={() => {
+                                        window.location.href = "https://eriehubest.github.io/project-gallery/";
+                                    }}
+                                >
+                                    View Projects
+                                </div>
+
+                                <div
+                                    className="link-end element"
+                                    onClick={() => {
+                                        window.location.href = "https://github.com/eriehubest/project-gallery";
+                                    }}
+                                >
+                                    View Source Code
+                                </div>
+                            </div>
                         </div>
                     </section>
 

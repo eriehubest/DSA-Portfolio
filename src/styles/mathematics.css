@@ -145,7 +145,15 @@
     }
 
     .achievements-block {
-      @apply pt-9 min-h-dvh;
+      @apply pt-9 min-h-dvh text-xl;
+    }
+
+    .project-link {
+      @apply w-full min-h-[10dvh] h-[10dvh] flex justify-between gap-4;
+    }
+
+    .project-link .element {
+      @apply flex-1 w-full h-full rounded-xl bg-black/10 font-BubbleB flex justify-center items-center text-[2rem] cursor-pointer hover:flex-[1.5] transition-all duration-300 hover:text-yellow-50;
     }
 
     .timeline-list {
