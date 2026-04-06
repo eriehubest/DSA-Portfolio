@@ -161,40 +161,37 @@ const Home = ({
                 new SplitText(
                     ".transform-text",
                     {
-                        type: "words",
+                        type: "lines, words",
+                        linesClass: "line",
                         wordsClass: "word",
                     },
                 );
 
             gsap.set(".bgblackanimate", {
-                // scaleX: 0,
-                // scaleY: 0,
                 width: 0,
                 height: 0,
             });
 
             gsap.set(
                 heroDownSplitText.words,
-                { yPercent: 150 },
+                { yPercent: 110, opacity: 0 },
             );
 
             gsap.set(
                 [
                     ".hero-eyebrow",
-                    ".hero-chip",
-                    ".hero-orbit",
+                    ".hero-divider-line",
                     ".scroll-cue",
                 ],
                 {
                     opacity: 0,
-                    y: 24,
                 },
             );
 
-            gsap.set(".hero-glow", {
-                opacity: 0,
-                scale: 0.85,
-            });
+            gsap.set(".hero-divider-line", { scaleX: 0 });
+            gsap.set(".hero-name", { letterSpacing: "0.25em", opacity: 0 });
+            gsap.set(".hero-name .word", { yPercent: 110, opacity: 0 });
+            gsap.set(".hero-background-pattern", { opacity: 0, scale: 1.1 });
 
             const homeDom =
                 document.querySelector(".home");
@@ -222,7 +219,7 @@ const Home = ({
 
             const heroIntroTl = gsap.timeline({
                 defaults: {
-                    ease: "power3.out",
+                    ease: "power4.out",
                 },
                 onComplete: () => {
                     document.body.classList.remove(
@@ -231,86 +228,84 @@ const Home = ({
                     );
                     ScrollTrigger.refresh();
 
-                    gsap.to('.scrollbar-container', {
-                        opacity: 1,
-                        duration: 1,
-                        ease: "power3.out",
-                    });
+                    // gsap.to('.scrollbar-container', {
+                    //     opacity: 1,
+                    //     duration: 1,
+                    //     ease: "power3.out",
+                    // });
                 },
             });
 
             heroIntroTl
-                .to(".hero-glow", {
-                    opacity: 1,
+                .to(".hero-background-pattern", {
+                    opacity: 0.15,
                     scale: 1,
-                    duration: 1.2,
+                    duration: 2,
                     ease: "power2.out",
                 })
                 .to(
                     ".hero-eyebrow",
                     {
                         opacity: 1,
-                        y: 0,
-                        duration: 0.45,
+                        duration: 0.8,
                     },
-                    "<+=0.15",
+                    "<+=0.5",
                 )
                 .to(
-                    heroDownSplitText.words,
+                    ".hero-name .word",
                     {
                         yPercent: 0,
-                        duration: 0.65,
-                        stagger: 0.06,
+                        opacity: 1,
+                        duration: 1.4,
+                        stagger: 0.15,
+                        ease: "power3.out",
                     },
-                    "<+=0.1",
+                    "<+=0.4",
                 )
                 .to(
-                    ".hero-divider",
+                    ".hero-name",
+                    {
+                        letterSpacing: "0.1em",
+                        opacity: 1,
+                        duration: 2.2,
+                        ease: "power2.out",
+                    },
+                    "<",
+                )
+                .to(
+                    ".hero-divider-line",
                     {
                         opacity: 1,
-                        y: 0,
                         scaleX: 1,
-                        duration: 0.5,
+                        duration: 1,
+                    },
+                    "<+=0.4",
+                )
+                .to(
+                    ".hero-tagline .word",
+                    {
+                        yPercent: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.02,
                     },
                     "<+=0.1",
-                )
-                .to(
-                    ".hero-orbit",
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        stagger: 0.12,
-                    },
-                    "-=0.25",
-                )
-                .to(
-                    ".hero-chip",
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.45,
-                        stagger: 0.08,
-                    },
-                    "-=0.25",
                 )
                 .to(
                     ".scroll-cue",
                     {
                         opacity: 1,
-                        y: 0,
-                        duration: 0.45,
+                        duration: 1,
                     },
-                    "-=0.15",
+                    "-=0.5",
                 );
 
-            gsap.to(".scroll-cue .cue-dot", {
-                y: 16,
+            gsap.to(".scroll-line-progress", {
+                scaleY: 0,
+                transformOrigin: "top",
                 repeat: -1,
-                yoyo: true,
-                duration: 0.9,
-                ease: "sine.inOut",
-                delay: 1.1,
+                duration: 1.5,
+                ease: "power1.inOut",
             });
 
             gsap.timeline({
@@ -329,7 +324,9 @@ const Home = ({
                     stagger: 0,
                 },
                 0,
-            );
+            ).to('.scrollbar-container', {
+                opacity: 1,
+            }, "<");
 
             gsap.timeline({
                 scrollTrigger: {
@@ -959,7 +956,7 @@ const Home = ({
         <div className="home" ref={root}>
             {/* <ScreenScribble setIntroAnimation={setIntroAnimation} /> */}
 
-            <div className="scrollbar-container z-9998">
+            <div className="scrollbar-container z-9998 opacity-0">
                 <div className="scrollbar">
                     <div className="top-scrollbar" />
                     <div className="bottom-scrollbar" />
@@ -980,55 +977,32 @@ const Home = ({
             </div>
 
             <div className="hero" id="home">
-                <div className="hero-glow hero-fade-item" />
-                <div className="hero-text hero-fade-item">
-                    <p className="hero-eyebrow">
-                        DSA Portfolio
-                    </p>
-                    <h1 className="transform-text">
-                        Hu Wenxuan
-                    </h1>
-                    {/* <h2 className="transform-text">DSA Portfolio</h2> */}
-                    <p className="transform-text">
-                        A student focusing on
-                        Mathematical Thinking and
-                        Computer Science
-                    </p>
-                </div>
-
-                <div className="hero-info relative hero-fade-item">
-                    <div className="hero-orbit hero-orbit-left">
-                        <span className="orbit-label">
-                            Reasoning
-                        </span>
-                        <span className="orbit-value">
-                            Built through mathematics
-                        </span>
-                    </div>
-                    <div className="hero-chip hero-chip-1">
-                        UKMT
-                    </div>
-                    <div className="hero-chip hero-chip-2">
-                        Frontend
-                    </div>
-                    <div className="hero-orbit hero-orbit-right">
-                        <span className="orbit-label">
-                            Practice
-                        </span>
-                        <span className="orbit-value">
-                            Shaped through code
-                        </span>
+                <div className="hero-background-pattern hero-fade-item" />
+                
+                <div className="hero-content hero-fade-item">
+                    <div className="hero-text-wrapper">
+                        <p className="hero-eyebrow">
+                            Portfolio // 2026
+                        </p>
+                        <h1 className="hero-name transform-text">
+                            Hu Wenxuan
+                        </h1>
+                        <div className="hero-divider-line" />
+                        <p className="hero-tagline transform-text">
+                            Computational reasoning through mathematics.<br/>
+                            Systemic expression through code.
+                        </p>
                     </div>
                 </div>
 
-                <div className="bottom-text hero-fade-item">
+                <div className="hero-footer hero-fade-item">
                     <div className="scroll-cue">
                         <span className="cue-text">
-                            Scroll to enter the timeline
+                            Explore the process
                         </span>
-                        <span className="cue-track">
-                            <span className="cue-dot" />
-                        </span>
+                        <div className="scroll-line-wrapper">
+                            <div className="scroll-line-progress" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1322,7 +1296,7 @@ const Home = ({
             <div className="footer">
                 <div className="footer-inner">
                     <p className="footer-kicker">
-                        This draft is moving toward a portfolio about thought process, not just output.
+                        This project is created through React.js, GSAP, and Three.js.
                     </p>
                     {/* <h2 className="footer-heading">
                         Mathematics gives me structure. Programming gives that structure a form.

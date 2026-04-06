@@ -168,15 +168,15 @@ export default class Application {
                 duration: 1,
             })
 
-            introTimeline.to(
-                this.world.wireframeMesh.children.map(child => child.material),
-                {
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power2.out"
-                },
-                "<"
-            )
+            // introTimeline.to(
+            //     this.world.wireframeMesh.children.map(child => child.material),
+            //     {
+            //         opacity: 1,
+            //         duration: 1,
+            //         ease: "power2.out"
+            //     },
+            //     "<"
+            // )
 
             introTimeline.to(this.world.meshCol.rotation, {
                 z: Math.PI / 4,

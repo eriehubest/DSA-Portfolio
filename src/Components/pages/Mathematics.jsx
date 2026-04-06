@@ -35,7 +35,7 @@ const achievementTimeline = [
         year: "2024",
         organisation: "UKMT",
         awards: [
-            "Caleey Olympiad Merit",
+            "Cayley Olympiad Merit",
             "IMC Gold",
             "SMC Gold",
         ],
@@ -153,6 +153,7 @@ const Mathematics = ({ mathematicsPage, setMathematicsPage }) => {
         <div
             ref={root}
             className="maths-page fixed z-[9999] bg-brown w-screen h-dvh text-white overflow-y-auto overscroll-none"
+            data-lenis-prevent
         >
             <aside className="maths-sidebar z-10000">
                 <div className="sidebar-copy">

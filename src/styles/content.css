@@ -54,102 +54,64 @@
     }
 
     .hero {
-      @apply relative w-screen min-h-screen h-screen flex flex-col items-center justify-around opacity-100;
+      @apply relative w-screen min-h-screen h-screen flex flex-col items-center justify-center overflow-hidden;
 
-      .hero-glow {
-        @apply absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none;
-        width: 32rem;
-        height: 32rem;
-        background: radial-gradient(
-          circle,
-          rgb(239 235 206 / 0.45) 0%,
-          rgb(239 235 206 / 0.12) 36%,
-          transparent 72%
+      .hero-background-pattern {
+        @apply absolute inset-0 pointer-events-none z-0;
+        background-image: radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0.15) 1px,
+          transparent 1px
         );
-        filter: blur(24px);
+        background-size: clamp(40px, 8vh, 80px) clamp(40px, 8vh, 80px);
+        mask-image: radial-gradient(
+          circle at center,
+          black,
+          transparent 80%
+        );
       }
 
-      .hero-text {
-        @apply flex-2 flex flex-col justify-center items-center;
+      .hero-content {
+        @apply relative z-10 flex flex-col items-center text-center px-6;
+      }
+
+      .hero-text-wrapper {
+        @apply flex flex-col items-center gap-6;
 
         .hero-eyebrow {
-          @apply mb-5 uppercase tracking-[0.45em] text-xs text-black/45;
+          @apply uppercase tracking-[0.5em] text-[0.7rem] text-black/40 font-SupR;
         }
 
-        .transform-text {
-          @apply overflow-hidden;
+        .hero-name {
+          @apply text-[clamp(3rem,12vw,9rem)] font-NecoR leading-none tracking-[0.1em] text-black/90 font-light;
         }
 
-        h1 {
-          @apply text-[8rem] font-NecoV text-center tracking-normal leading-[9rem];
+        .hero-divider-line {
+          @apply w-24 h-px bg-black/20 my-4;
         }
 
-        p {
-          @apply text-[1.2rem] text-center font-ExconR origin-bottom leading-[3rem];
+        .hero-tagline {
+          @apply text-[clamp(1rem,2.5vh,1.4rem)] font-ExconR leading-relaxed text-black/60 max-w-[32rem];
         }
       }
 
-      .hero-info {
-        @apply flex-2 flex justify-center items-center w-full h-full relative px-12;
-      }
-
-      .hero-orbit {
-        @apply absolute z-2 rounded-[1.75rem] border border-black/10 bg-white/25 backdrop-blur-md px-6 py-5 w-[16rem] flex flex-col gap-2;
-        box-shadow: 0 18px 48px rgb(0 0 0 / 0.08);
-      }
-
-      .hero-orbit-left {
-        left: 30%;
-        top: 50%;
-        transform: translate(-100%, -50%);
-      }
-
-      .hero-orbit-right {
-        right: 30%;
-        top: 50%;
-        transform: translate(100%, -50%);
-      }
-
-      .orbit-label {
-        @apply uppercase tracking-[0.28em] text-[0.7rem] text-black/45;
-      }
-
-      .orbit-value {
-        @apply text-lg leading-7 text-black/75;
-      }
-
-      .hero-chip {
-        @apply absolute z-3 rounded-full border border-black/10 bg-white/35 backdrop-blur-md px-4 py-2 uppercase tracking-[0.22em] text-xs text-black/60;
-        box-shadow: 0 14px 30px rgb(0 0 0 / 0.08);
-      }
-
-      .hero-chip-1 {
-        left: calc(45% - 12rem);
-        top: calc(50% - 8.5rem);
-      }
-
-      .hero-chip-2 {
-        right: calc(45% - 12rem);
-        top: calc(50% - 8.5rem);
-      }
-
-      .bottom-text {
-        @apply flex-1 h-full w-full flex-center;
+      .hero-footer {
+        @apply absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4;
 
         .scroll-cue {
-          @apply flex flex-col items-center gap-4 text-black/55;
+          @apply flex flex-col items-center gap-4 opacity-0;
         }
 
         .cue-text {
-          @apply uppercase tracking-[0.34em] text-xs;
+          @apply uppercase tracking-[0.4em] text-[0.65rem] text-black/30 font-SupR;
         }
 
-        .cue-track {
-          @apply w-[1.6rem] h-[4rem] rounded-full border border-black/15 flex justify-center pt-2;
-        }
+        .scroll-line-wrapper {
+          @apply w-px h-12 bg-black/10 relative overflow-hidden;
 
-        .cue-dot {
-          @apply block w-2 h-2 rounded-full bg-black/45;
+          .scroll-line-progress {
+            @apply absolute inset-0 bg-black/40;
+          }
         }
       }
     }

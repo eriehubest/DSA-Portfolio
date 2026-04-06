@@ -86,6 +86,8 @@
 
   --font-BubbleB: "Bubble-Bold", sans-serif;
   --font-BubbleR: "Bubble-Regular", sans-serif;
+
+  --font-JetMono: "JetBrains Mono", monospace;
 }
 
 * {
@@ -96,10 +98,30 @@ html,
 body {
   min-height: 100dvh;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   width: 100vw;
   font-family: var(--font-NecoR);
   background: var(--color-brown);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {

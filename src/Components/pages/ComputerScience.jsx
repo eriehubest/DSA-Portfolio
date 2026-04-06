@@ -192,7 +192,7 @@ const ComputerScience = ({
             </aside>
 
             <div className="maths-shell">
-                <div className="maths-main">
+                <div className="maths-main" data-lenis-prevent>
                     <section className={`section-panel ${activeSection === "overview" ? "is-active" : "is-hidden"}`}>
                         <div className="hero-block">
                             <div className="hero-copy">
