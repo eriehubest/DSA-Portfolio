@@ -1296,7 +1296,7 @@ const Home = ({
             <div className="footer">
                 <div className="footer-inner">
                     <p className="footer-kicker">
-                        This project is created through React.js, GSAP, and Three.js.
+                        This portfolio was independently designed and developed by me using React.js, GSAP, and Three.js.
                     </p>
                     {/* <h2 className="footer-heading">
                         Mathematics gives me structure. Programming gives that structure a form.
