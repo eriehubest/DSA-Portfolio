@@ -1150,8 +1150,8 @@ const Home = ({
                                     <svg ref={scribblePathRef} className="card-scribble" viewBox="200 60 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#e3d5ca" stroke-width="140" stroke-linecap="round" />
                                     </svg>
-                                    <svg className="card-scribble scale-x-[-2]" viewBox="60 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="180" stroke-linecap="round" />
+                                    <svg className="card-scribble scale-x-[-2]" viewBox="50 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="185" stroke-linecap="round" />
                                     </svg>
                                     <div className="hover-text">
                                         CLICK
@@ -1190,8 +1190,8 @@ const Home = ({
                                     <svg ref={scribblePathRef} className="card-scribble" viewBox="200 60 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#e3d5ca" stroke-width="140" stroke-linecap="round" />
                                     </svg>
-                                    <svg className="card-scribble scale-x-[-2]" viewBox="60 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="180" stroke-linecap="round" />
+                                    <svg className="card-scribble scale-x-[-2]" viewBox="50 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="185" stroke-linecap="round" />
                                     </svg>
 
                                     <div className="hover-text">
