@@ -19,6 +19,11 @@ export default class Application {
 
     constructor() {
         Application.instance = this;
+
+        this.isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+        this.coverPage = document.querySelector('.cover')
+        if (!this.isMobile)
+            this.coverPage.classList.add('hidden')
     }
 
     async createMathsPage(_options) {

@@ -956,6 +956,10 @@ const Home = ({
         <div className="home" ref={root}>
             {/* <ScreenScribble setIntroAnimation={setIntroAnimation} /> */}
 
+            <div className="cover fixed top-0 left-0 w-screen h-screen bg-white z-10000000000 flex-center text-[2dvw] font-BubbleB text-center">
+                Please Use a Desktop Device
+            </div>
+
             <div className="scrollbar-container z-9998 opacity-0">
                 <div className="scrollbar">
                     <div className="top-scrollbar" />
