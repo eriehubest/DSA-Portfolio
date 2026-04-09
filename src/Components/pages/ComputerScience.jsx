@@ -13,25 +13,25 @@ const sections = [
 
 const projectCards = [
     {
-        title: "Portfolio Canvas System",
-        type: "Three.js / Architecture",
+        title: "Project Gallery",
+        type: "Portfolio / Project Index",
         note:
-            "The homepage scene is built as a reusable application layer with its own world setup, animation tracking, viewport logic, and scene management.",
-        tags: ["Application.js", "Scene setup", "Animation"],
+            "An external gallery used to organise and present larger technical projects more clearly, with individual project pages used for deeper explanation and reflection.",
+        tags: ["Case studies", "Project navigation", "Presentation"],
     },
     {
-        title: "Interactive Particle Mathematics Scene",
-        type: "Three.js / GLSL",
+        title: "Vehicle Systems Project",
+        type: "Three.js / Rapier / Architecture",
         note:
-            "A point-cloud image shader that reacts to pointer movement through a displacement texture, combining geometry, shaders, and interaction design.",
-        tags: ["ShaderMaterial", "Raycaster", "Particles"],
+            "A modular vehicle project built around separated systems for rendering, physics, input, camera control, world construction, resource loading, and timing.",
+        tags: ["Vehicle.js", "Physics.js", "Rendering.js"],
     },
     {
-        title: "Cube Portrait World",
-        type: "Three.js / Experiment",
+        title: "Portfolio Interface",
+        type: "React / Motion / UI structure",
         note:
-            "A spatial composition built from grouped meshes, textured cube faces, wireframe layers, and lighting to test form, depth, and motion inside the portfolio.",
-        tags: ["Textures", "Lighting", "3D layout"],
+            "This portfolio is also part of the work itself, using React, GSAP, and structured page design to present technical projects with more clarity and intention.",
+        tags: ["React", "GSAP", "Presentation"],
     },
 ];
 
@@ -147,7 +147,7 @@ const ComputerScience = ({
             );
 
             gsap.fromTo(
-                ".cs-page .maths-main .achievement-item, .cs-page .maths-main .focus-item, .cs-page .maths-main .signal-card, .cs-page .maths-main .timeline-card, .cs-page .maths-main .award-chip, .cs-page .maths-main .project-card",
+                ".cs-page .maths-main .achievement-item, .cs-page .maths-main .focus-item, .cs-page .maths-main .signal-card, .cs-page .maths-main .timeline-card, .cs-page .maths-main .award-chip, .cs-page .maths-main .project-card, .cs-page .maths-main .project-callout",
                 { y: 20, opacity: 0 },
                 {
                     y: 0,
@@ -245,10 +245,39 @@ const ComputerScience = ({
 
                     <section className={`section-panel ${activeSection === "projects" ? "is-active" : "is-hidden"}`}>
                         <div className="content-block achievements-block">
-                            <p className="eyebrow">Three.js Projects</p>
+                            <p className="eyebrow">Projects</p>
                             <h1>
-                                A few projects and systems that show how I have been using Three.js in this portfolio.
+                                A few projects and systems that show how I have been structuring technical work across this portfolio.
                             </h1>
+                            <div className="project-callout">
+                                <div className="project-callout-copy">
+                                    <p className="project-callout-label">Featured link</p>
+                                    <h2 className="project-callout-title">Open the project gallery for the full case-study view.</h2>
+                                    <p className="project-callout-note">
+                                        The gallery contains the larger project write-ups, including the vehicle project and the more detailed structural explanation behind it.
+                                    </p>
+                                </div>
+
+                                <div className="project-callout-actions">
+                                    <a
+                                        className="project-cta project-cta-primary"
+                                        href="https://eriehubest.github.io/project-gallery/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        View Project Gallery
+                                    </a>
+
+                                    <a
+                                        className="project-cta project-cta-secondary"
+                                        href="https://github.com/eriehubest/project-gallery"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        View Source Code
+                                    </a>
+                                </div>
+                            </div>
                             <div className="project-list">
                                 {projectCards.map((project) => (
                                     <article key={project.title} className="project-card">
@@ -270,25 +299,6 @@ const ComputerScience = ({
                                         </div>
                                     </article>
                                 ))}
-                            </div>
-                            <div className="project-link">
-                                <div
-                                    className="link-start element"
-                                    onClick={() => {
-                                        window.location.href = "https://eriehubest.github.io/project-gallery/";
-                                    }}
-                                >
-                                    View Projects
-                                </div>
-
-                                <div
-                                    className="link-end element"
-                                    onClick={() => {
-                                        window.location.href = "https://github.com/eriehubest/project-gallery";
-                                    }}
-                                >
-                                    View Source Code
-                                </div>
                             </div>
                         </div>
                     </section>
