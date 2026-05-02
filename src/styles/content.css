@@ -228,7 +228,7 @@
           @apply relative w-full min-h-[30dvh] flex-center;
 
           .description-text {
-            @apply max-w-[50%] text-center text-white text-2xl absolute;
+            @apply absolute left-1/2 top-1/2 w-[min(70vw,56rem)] -translate-x-1/2 -translate-y-1/2 text-center text-2xl leading-[1.5] text-white pointer-events-none;
           }
 
           .shadow {
@@ -335,7 +335,7 @@
 
             .hover-text
             {
-              @apply text-7xl absolute h-full w-full top-0 left-0 flex justify-center items-center text-center font-BubbleB z-101 text-white opacity-0;
+              @apply text-4xl absolute h-full w-full top-0 left-0 flex justify-center items-center text-center font-BubbleB z-101 text-white opacity-0;
             }
 
             .card-scribble {

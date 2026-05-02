@@ -54,7 +54,7 @@ const timelineEntries = [
     {
         year: "2025",
         topText:
-            "I took part in USACO, reached the Gold division, and received a distinction in AMC 12B. Those experiences reinforced both persistence and technical depth.",
+            "I continued building larger technical projects independently while competing in USACO and receiving a distinction in AMC 12B. Those experiences reinforced both persistence and technical depth.",
         bottomText:
             "Competition work sharpened speed, clarity, and endurance.",
     },
@@ -300,13 +300,16 @@ const Home = ({
                     "-=0.5",
                 );
 
-            gsap.to(".scroll-line-progress", {
+            const scrollTimeline = gsap.timeline({ repeat: -1 });
+            scrollTimeline.to(".scroll-line-progress", {
                 scaleY: 0,
                 transformOrigin: "top",
-                repeat: -1,
                 duration: 1.5,
                 ease: "power1.inOut",
-            });
+            }).to(".scroll-line-progress", {
+                scaleY: 1,
+                duration: 0.2,
+            })
 
             gsap.timeline({
                 scrollTrigger: {
@@ -643,7 +646,7 @@ const Home = ({
 
             descriptiontl.to(journeyDescriptionSplitText.words, {
                 opacity: 1,
-                duration: 0.5,
+                duration: 0.02,
                 stagger: 0.01
             })
 
@@ -863,6 +866,8 @@ const Home = ({
     useLayoutEffect(() => {
         if (!scribblePathRef.current) return;
 
+        const PATH = document.querySelector('.computer-science-element .card-scribble path');
+
         const path = document.querySelector('.computer-science-element .card-scribble path');
         const path11 = document.querySelector('.mathematics-element .card-scribble path');
         const length = path?.getTotalLength();
@@ -873,9 +878,12 @@ const Home = ({
         const length2 = path2?.getTotalLength();
         const hoverText2 = document.querySelector('.mathematics-element .hover-text')
 
+        gsap.set([ hoverText1, hoverText2 ], {yPercent: -10})
+
         if (computerScienceHover) {
             gsap.killTweensOf(path)
             gsap.killTweensOf(path2)
+            gsap.killTweensOf(hoverText1)
             gsap.to(path, {
                 strokeDashoffset: 0,
                 duration: 2,
@@ -888,6 +896,7 @@ const Home = ({
             }, "<0.2")
             gsap.to(hoverText1, {
                 opacity: 1,
+                yPercent: 0,
                 duration: 0.5,
             }, "<")
         }
@@ -895,6 +904,7 @@ const Home = ({
         else {
             gsap.killTweensOf(path)
             gsap.killTweensOf(path2)
+            gsap.killTweensOf(hoverText1)
             gsap.to(path2, {
                 strokeDashoffset: length2,
                 duration: 2,
@@ -908,6 +918,9 @@ const Home = ({
             gsap.to(hoverText1, {
                 opacity: 0,
                 duration: 0.5,
+                onComplete: (self) => {
+                    gsap.set(hoverText1, { yPercent: -10 });
+                }
             }, "<")
         }
 
@@ -915,6 +928,7 @@ const Home = ({
         {
             gsap.killTweensOf(path11)
             gsap.killTweensOf(path12)
+            gsap.killTweensOf(hoverText2)
             gsap.to(path11, {
                 strokeDashoffset: 0,
                 duration: 2,
@@ -927,6 +941,7 @@ const Home = ({
             }, "<0.2")
             gsap.to(hoverText2, {
                 opacity: 1,
+                yPercent: 0,
                 duration: 0.5,
             }, "<")
         }
@@ -935,6 +950,7 @@ const Home = ({
         {
             gsap.killTweensOf(path11)
             gsap.killTweensOf(path12)
+            gsap.killTweensOf(hoverText2)
             gsap.to(path12, {
                 strokeDashoffset: length2,
                 duration: 2,
@@ -948,6 +964,9 @@ const Home = ({
             gsap.to(hoverText2, {
                 opacity: 0,
                 duration: 0.5,
+                onComplete: (self) => {
+                    gsap.set(hoverText2, { yPercent: -10 });
+                }
             }, "<")
         }
     }, [computerScienceHover, mathsHover])
@@ -1128,12 +1147,12 @@ const Home = ({
                     <div className="description-container">
                         <p className="description-text shadow z-9">
                             Mathematics and Computer Science have shaped how I approach difficult problems.
-                            Through competitions and independent projects, I’ve learned to analyse problems carefully, persist through complexity, and translate ideas into working systems.
+                            Through competitions and fully independent self-taught projects, I’ve learned to analyse problems carefully, persist through complexity, and translate ideas into working systems.
                         </p>
 
                         <p className="description-text z-10 real-text">
                             Mathematics and Computer Science have shaped how I approach difficult problems.
-                            Through competitions and independent projects, I’ve learned to analyse problems carefully, persist through complexity, and translate ideas into working systems.
+                            Through competitions and fully independent self-taught projects, I’ve learned to analyse problems carefully, persist through complexity, and translate ideas into working systems.
                         </p>
                     </div>
 
@@ -1154,7 +1173,7 @@ const Home = ({
                                         <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="185" stroke-linecap="round" />
                                     </svg>
                                     <div className="hover-text">
-                                        CLICK
+                                        CLICK to View Maths Page
                                     </div>
                                     <div className="topic-grid-title">
                                         <span>Mathematics</span>
@@ -1191,11 +1210,12 @@ const Home = ({
                                         <path d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#e3d5ca" stroke-width="140" stroke-linecap="round" />
                                     </svg>
                                     <svg className="card-scribble scale-x-[-2]" viewBox="50 60 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="185" stroke-linecap="round" />
-                                    </svg>
+                                        <path className="path2" d="M62.0005 437.26C204.167 279.76 490.017 1.44701 574.001 73.7595C739.501 216.259 -0.499481 487.259 260.501 633.759C373.043 696.93 712.001 113.259 780.501 344.26C815.585 462.574 417.596 658.259 460.501 774.759C529.001 960.759 866.001 466.259 866.001 595.759" stroke="#d5bdaf" stroke-width="185" stroke-linecap="round">
+                                        </path>
+                                        </svg>
 
                                     <div className="hover-text">
-                                        CLICK
+                                        CLICK to View CS Page
                                     </div>
 
                                     <div className="topic-grid-title">
@@ -1207,7 +1227,7 @@ const Home = ({
 
                                     <div className="information">
                                         <p>
-                                            Programming became the place where abstract reasoning turns into systems, interfaces, and interactions that can actually be tested.
+                                            Programming became the place where abstract reasoning turns into systems, interfaces, and interactions that can actually be tested, refined, and explained.
                                         </p>
                                         <div className="info-pills">
                                             <span>Systems</span>
@@ -1300,7 +1320,7 @@ const Home = ({
             <div className="footer">
                 <div className="footer-inner">
                     <p className="footer-kicker">
-                        This portfolio was independently designed and developed by me using React.js, GSAP, and Three.js.
+                        This portfolio and its linked project gallery were independently designed and developed by me using React.js, GSAP, Three.js, and related web graphics tools.
                     </p>
                     {/* <h2 className="footer-heading">
                         Mathematics gives me structure. Programming gives that structure a form.

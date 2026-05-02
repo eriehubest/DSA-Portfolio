@@ -14,24 +14,24 @@ const sections = [
 const projectCards = [
     {
         title: "Project Gallery",
-        type: "Portfolio / Project Index",
+        type: "Technical Case-Study Hub",
         note:
-            "An external gallery used to organise and present larger technical projects more clearly, with individual project pages used for deeper explanation and reflection.",
-        tags: ["Case studies", "Project navigation", "Presentation"],
+            "A self-designed project gallery built to present larger technical work more clearly, with linked project pages used to explain architecture, implementation choices, and what I learned from each system.",
+        tags: ["Independent build", "Case studies", "Technical writing"],
     },
     {
         title: "Vehicle Systems Project",
         type: "Three.js / Rapier / Architecture",
         note:
-            "A modular vehicle project built around separated systems for rendering, physics, input, camera control, world construction, resource loading, and timing.",
-        tags: ["Vehicle.js", "Physics.js", "Rendering.js"],
+            "A fully independent vehicle project organised into separate systems for rendering, physics, input, camera control, world construction, resource loading, and timing.",
+        tags: ["Modular systems", "Physics", "Rendering pipeline"],
     },
     {
-        title: "Portfolio Interface",
-        type: "React / Motion / UI structure",
+        title: "Portfolio Website",
+        type: "React / GSAP / Three.js",
         note:
-            "This portfolio is also part of the work itself, using React, GSAP, and structured page design to present technical projects with more clarity and intention.",
-        tags: ["React", "GSAP", "Presentation"],
+            "This submission website was also independently designed and built by me, using motion, layout, and interactive structure to present mathematical and technical work in a more intentional way.",
+        tags: ["React", "GSAP", "Independent build"],
     },
 ];
 
@@ -40,7 +40,7 @@ const achievementTimeline = [
         year: "2023",
         organisation: "Programming Foundations",
         awards: [
-            "Started solving algorithmic problems in Python",
+            "Started learning programming independently in Python",
         ],
         note:
             "This was the point where programming stopped feeling like syntax practice and started feeling like structured problem solving.",
@@ -49,27 +49,28 @@ const achievementTimeline = [
         year: "2024",
         organisation: "Frontend and JavaScript",
         awards: [
-            "Moved into interactive web development",
-            "Began building visual systems instead of isolated scripts",
+            "Moved into self-taught web development",
+            "Began building interactive systems instead of isolated scripts",
         ],
         note:
             "The focus widened from solving problems to designing interfaces, animations, and software behaviour that could be seen and tested.",
     },
     {
-        year: "2025",
+        year: "Recent",
         organisation: "USACO",
         awards: [
-            "Reached Gold division",
+            "Bronze round: 900/1000",
+            "Silver round: 500/1000",
         ],
         note:
-            "USACO was the clearest benchmark for algorithmic endurance, debugging discipline, and staying precise under contest pressure.",
+            "USACO provided a competitive benchmark for algorithmic endurance, debugging discipline, and staying precise under contest pressure.",
     },
 ];
 
 const focusPoints = [
-    "I like building systems where logic and presentation reinforce each other.",
-    "Three.js is especially interesting because it turns technical structure into visible motion.",
-    "Competitive programming trained speed and rigor; projects trained iteration and taste.",
+    "I like building systems where logic, interaction, and presentation reinforce one another.",
+    "I taught myself these tools by building projects large enough to force real architectural decisions.",
+    "Competitive programming trained precision; projects trained independence, iteration, and system design.",
 ];
 
 const ComputerScience = ({
@@ -173,7 +174,7 @@ const ComputerScience = ({
                 <div className="sidebar-copy">
                     <p className="eyebrow">Computer Science</p>
                     <p className="sidebar-note">
-                        Use the side navigation to move between the overview, project work, and competition record.
+                        Use the side navigation to move between the overview, project evidence, and competition record.
                     </p>
                 </div>
 
@@ -198,10 +199,10 @@ const ComputerScience = ({
                             <div className="hero-copy">
                                 <p className="eyebrow">Overview</p>
                                 <h1>
-                                    Computer science is where reasoning becomes something I can build, test, and refine.
+                                    Computing is where I turn abstract reasoning into systems I can build, test, and refine independently.
                                 </h1>
                                 <p className="lede">
-                                    I am most interested in the point where abstract logic turns into software that has behaviour, interaction, and visible structure.
+                                    I am especially interested in the point where abstract logic turns into software with behaviour, interaction, and visible structure, and I have been teaching myself the tools needed to build that kind of work from scratch.
                                 </p>
                             </div>
 
@@ -226,7 +227,7 @@ const ComputerScience = ({
                             <article className="signal-card">
                                 <p className="signal-label">How I work</p>
                                 <p>
-                                    I usually start by finding the structure of a system first, then make the interface and motion express that structure clearly.
+                                    I usually begin by identifying the structure of a system first, then make the interface and motion express that structure clearly.
                                 </p>
                             </article>
                         </div>
@@ -247,14 +248,14 @@ const ComputerScience = ({
                         <div className="content-block achievements-block">
                             <p className="eyebrow">Projects</p>
                             <h1>
-                                A few projects and systems that show how I have been structuring technical work across this portfolio.
+                                The main project work I built independently, used here as evidence of technical depth and self-directed learning.
                             </h1>
                             <div className="project-callout">
                                 <div className="project-callout-copy">
                                     <p className="project-callout-label">Featured link</p>
-                                    <h2 className="project-callout-title">Open the project gallery for the full case-study view.</h2>
+                                    <h2 className="project-callout-title">Open the project gallery for the full technical case-study view.</h2>
                                     <p className="project-callout-note">
-                                        The gallery contains the larger project write-ups, including the vehicle project and the more detailed structural explanation behind it.
+                                        The gallery contains the larger technical write-ups, including the vehicle project, system breakdowns, and the architectural decisions behind them.
                                     </p>
                                 </div>
 
@@ -307,7 +308,7 @@ const ComputerScience = ({
                         <div className="content-block achievements-block">
                             <p className="eyebrow">Achievements</p>
                             <h1>
-                                The main milestones so far, with USACO as the clearest competitive benchmark.
+                                The main milestones so far, with USACO serving as a supporting competitive benchmark alongside independent project work.
                             </h1>
                             <div className="timeline-list">
                                 {achievementTimeline.map((item) => (
