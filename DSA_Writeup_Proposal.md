@@ -43,9 +43,3 @@ What connects both areas for me is structure: in mathematics, structure appears 
 - Built a modular vehicle systems project with separated systems for rendering, physics, input, camera control, world construction, resource loading, and timing
 - `USACO Bronze`: `900/1000`
 - `USACO Silver`: `500/1000`
-
-## Notes For Adaptation
-
-- For `NYJC Science Research`, emphasize independent learning, technical depth, and ability to handle abstraction and complex systems.
-- For `NYJC Mathematics / Science Olympiad`, emphasize the mathematics record first, then use computing as supporting evidence of problem-solving and initiative.
-- For `RI` or `HCI`, keep the tone slightly tighter and more formal, and avoid overstating the computing competition profile.
